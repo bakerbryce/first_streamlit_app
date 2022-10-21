@@ -24,8 +24,10 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 sl.dataframe(fruits_to_show)
 
 # Get fruityvice data and display
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-sl.text(fruityvice_response.json())
+sl.header('Fruityvice Fruit Advice!')
+fruit_choice = sl.text_input('What fruit would you like info about?','Kiwi')
+sl.write('The user entered ',fruit_choice)
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 sl.dataframe(fruityvice_normalized)
