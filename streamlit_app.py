@@ -28,7 +28,7 @@ sl.dataframe(fruits_to_show)
 # Get fruityvice data and display
 sl.header('Fruityvice Fruit Advice!')
 try:
-   fruit_choice = sl.text_input('What fruit would you like info about?','Kiwi')
+   fruit_choice = sl.text_input('What fruit would you like info about?')
    if not fruit_choice:
         sl.error("please select a fruit to get info.")
 else:
