@@ -34,10 +34,18 @@ fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 sl.dataframe(fruityvice_normalized)
 
 
+sl.stop()
+
 # Get data from Snowflake
 my_cnx = sfc.connect(**sl.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * from fdc_food_ingest")
 my_data_rows = my_cur.fetchall()
-sl.header("Some table rows are:")
+sl.header("All table rows are:")
 sl.dataframe(my_data_rows)
+
+# Allow insert into Snowflake
+add_my_fruit = sl.text_input('What row would you like to add?')
+
+sl.write('Thanks for adding a record: ',add_my_fruit)
+my_cur.execute("insert into fdc_food_ingest values ('from streamlit'))
