@@ -29,7 +29,8 @@ sl.dataframe(fruits_to_show)
 sl.header('Fruityvice Fruit Advice!')
 try:
   fruit_choice = sl.text_input('What fruit would you like info about?','Kiwi')
-  if not fruit_choice("please select a fruit to get info.")
+  if not fruit_choice:
+    sl.error("please select a fruit to get info.")
 else:
   sl.write('The user entered ',fruit_choice)
   fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
