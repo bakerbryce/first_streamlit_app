@@ -45,16 +45,24 @@ except:
    sl.error()
 
 
-sl.stop()
-
+   
+   
+   
 # Get data from Snowflake
-my_cnx = sfc.connect(**sl.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT * from fdc_food_ingest")
-my_data_rows = my_cur.fetchall()
-sl.header("All table rows are:")
-sl.dataframe(my_data_rows)
+# Snowflake related functions
+def get_fruit_load_list():
+   with my_cnx.cursor() as my_cur:
+      my_cur.execute("select * from fdc_food_ingest")
+      return my_cur.fetchall()
 
+# Add a button to load the table
+if sl.button('Get table load list'):
+   my_cnx = sfc.connect(**sl.secrets["snowflake"])
+   my_data_rows = my_cur.fetchall()
+   sl.header("All table rows are:")
+   sl.dataframe(my_data_rows)
+
+sl.stop()
 # Allow insert into Snowflake
 add_my_fruit = sl.text_input('What row would you like to add?')
 
