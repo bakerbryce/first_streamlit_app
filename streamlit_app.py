@@ -48,4 +48,4 @@ sl.dataframe(my_data_rows)
 add_my_fruit = sl.text_input('What row would you like to add?')
 
 sl.write('Thanks for adding a record: ',add_my_fruit)
-my_cur.execute("insert into fdc_food_ingest values ('from streamlit'))
+my_cur.execute("insert into fdc_food_ingest values ('from streamlit')")
