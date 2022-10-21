@@ -58,7 +58,7 @@ def get_fruit_load_list():
 # Add a button to load the table
 if sl.button('Get table load list'):
    my_cnx = sfc.connect(**sl.secrets["snowflake"])
-   my_data_rows = my_cur.fetchall()
+   my_data_rows = get_fruit_load_list()
    sl.header("All table rows are:")
    sl.dataframe(my_data_rows)
 
