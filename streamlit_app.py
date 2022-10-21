@@ -28,16 +28,16 @@ sl.dataframe(fruits_to_show)
 # Get fruityvice data and display
 sl.header('Fruityvice Fruit Advice!')
 try:
-  fruit_choice = sl.text_input('What fruit would you like info about?','Kiwi')
-  if not fruit_choice:
-    sl.error("please select a fruit to get info.")
+   fruit_choice = sl.text_input('What fruit would you like info about?','Kiwi')
+   if not fruit_choice:
+        sl.error("please select a fruit to get info.")
 else:
-  sl.write('The user entered ',fruit_choice)
-  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-  fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
-  sl.dataframe(fruityvice_normalized)
+   sl.write('The user entered ',fruit_choice)
+   fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+   fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+   sl.dataframe(fruityvice_normalized)
 except:
-  sl.error()
+   sl.error()
 
 
 sl.stop()
