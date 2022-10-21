@@ -34,10 +34,10 @@ fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 sl.dataframe(fruityvice_normalized)
 
 
-
+# Get data from Snowflake
 my_cnx = sfc.connect(**sl.secrets["snowflake"])
 my_cur = my_cnx.cursor()
-my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+my_cur.execute("SELECT * from fdc_food_ingest")
 my_data_row = my_cur.fetchone()
-sl.text("Hello from Snowflake:")
+sl.text("Some table rows are:")
 sl.text(my_data_row)
