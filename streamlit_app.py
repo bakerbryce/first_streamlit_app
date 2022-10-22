@@ -62,7 +62,7 @@ if sl.button('Get table load list'):
    sl.header("All table rows are:")
    sl.dataframe(my_data_rows)
 
-sl.stop()
+sl.stop() # prevent rendering anything below
 # Allow insert into Snowflake
 add_my_fruit = sl.text_input('What row would you like to add?')
 
